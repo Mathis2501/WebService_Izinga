@@ -17,6 +17,7 @@ namespace WebService_Izinga
             alarms = new List<Alarm>();
         }
 
+      
 
         public string TriggerAlarm(string typeOfAlarm)
         {
