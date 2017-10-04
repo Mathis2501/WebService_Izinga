@@ -16,8 +16,7 @@ namespace WebService_Izinga
             TeliaSMSs = new List<TeliaSMS>();
         }
 
-        //Intended to split up a string into object type: DateTime
-        //string format is supposed to be "2017-10-04 10:51:57"
+        
 
         public void TeliaLogReader()
         {
@@ -47,6 +46,8 @@ namespace WebService_Izinga
 
             File.Delete(targetpath);
         }
+        //Intended to split up a string into object type: DateTime
+        //string format is supposed to be "2017-10-04 10:51:57"
         public DateTime IntepretDateTime(string input)
         {
             string[] date, time, dateAndTime;
