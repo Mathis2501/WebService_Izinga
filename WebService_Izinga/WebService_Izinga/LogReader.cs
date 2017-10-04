@@ -34,7 +34,7 @@ namespace WebService_Izinga
             {
                 if (line.Contains("Number=+4551418279"))
                 {
-                    Regex regex = new Regex(@"\d{4}[-]\d{2}[-]\d{2}\s\d{2}[:]\d{2}[:]\d{2}");
+                    Regex regex = new Regex(@"(\d{4}[-]\d{2}[-]\d{2}\s\d{2}[:]\d{2}[:]\d{2})|(\w{3,}[=][a-zA-Z+0-9\s]{0,})");
                     Match match = regex.Match(line);
                     Console.WriteLine(match.Value);
                 }
