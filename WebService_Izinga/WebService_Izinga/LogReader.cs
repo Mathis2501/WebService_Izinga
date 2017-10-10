@@ -10,17 +10,21 @@ namespace WebService_Izinga
 {
     public class LogReader
     {
-        public List<TeliaSMS> TeliaSMSs;
-        public LogReader(List<Alarm> alarms)
+
+        private List<TeliaSMS> TeliaSMSs;
+        public LogReader()
         {
-            TeliaSMSs = new List<TeliaSMS>();
+
+        }
+        public LogReader(List<TeliaSMS> alarms)
+        {
+            TeliaSMSs = alarms;
         }
 
         
 
         public void TeliaLogReader()
         {
-            TeliaSMS NewSMS = new TeliaSMS();
 
 
             string filepath = @"C:\Program Files (x86)\Mobilt Bredband\Log\trace_0.txt";
@@ -37,15 +41,35 @@ namespace WebService_Izinga
                 {
                     Regex regex = new Regex(@"(\d{4}[-]\d{2}[-]\d{2}\s\d{2}[:]\d{2}[:]\d{2})|(\w{3,}[=][a-zA-Z+0-9\s]{0,})");
                     MatchCollection match = regex.Matches(line);
+
+
+                    DateTime TimeOfAlaram = IntepretDateTime(match[0].ToString());
+
+                    string content = IntepretData(match[1].ToString());
+
+                    string Number = IntepretData(match[2].ToString());
+
+                    TeliaSMS NewAlaram = new TeliaSMS();
+
+                    NewAlaram.number = Number;
+                    NewAlaram.time = TimeOfAlaram;
+                    NewAlaram.content = content;
+
+                    if (!TeliaSMSs.Exists(x => x.time == TimeOfAlaram))
+                    {
+                        TeliaSMSs.Add(NewAlaram);
+                    }
+
                     
                 }
             }
-      
-
-            Console.ReadKey();
-
 
             File.Delete(targetpath);
+        }
+
+        public void Objectfiller()
+        {
+
         }
         //Intended to split up a string into object type: DateTime
         //string format is supposed to be "2017-10-04 10:51:57"
@@ -57,6 +81,12 @@ namespace WebService_Izinga
             time = dateAndTime[1].Split(':');
             return new DateTime(int.Parse(date[0]), int.Parse(date[1]), int.Parse(date[2]), int.Parse(time[0]), int.Parse(time[1]), int.Parse(time[2]));
 
+        }
+
+        public string IntepretData(string input)
+        {
+            string[] DataArray = input.Split('=');
+            return DataArray[1];
         }
 
         //public void OldLogReader()

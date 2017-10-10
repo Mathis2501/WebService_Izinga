@@ -12,8 +12,6 @@ namespace WebService_Izinga
     public interface IService1
     {
         [OperationContract]
-        string TriggerAlarm(string typeOfAlarm);
-        [OperationContract]
         string GetData(int value);
 
         [OperationContract]
