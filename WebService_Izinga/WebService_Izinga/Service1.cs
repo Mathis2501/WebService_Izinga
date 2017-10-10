@@ -11,19 +11,20 @@ namespace WebService_Izinga
     public class Service1 : IService1
     {
         private List<TeliaSMS> alarms;
+        LogReader lr;
 
         public Service1()
         {
             alarms = new List<TeliaSMS>();
-            LogReader lr = new LogReader(alarms);
+            lr = new LogReader(alarms);
         }
 
       
 
 
-        public string GetData(int value)
+        public TeliaSMS GetData()
         {
-            return string.Format("You entered: {0}", value);
+            return alarms[0];
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)

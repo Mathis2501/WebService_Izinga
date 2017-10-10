@@ -19,6 +19,7 @@ namespace WebService_Izinga
         public LogReader(List<TeliaSMS> alarms)
         {
             TeliaSMSs = alarms;
+            TeliaLogReader();
         }
 
         
