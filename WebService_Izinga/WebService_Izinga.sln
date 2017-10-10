@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService_Izinga", "WebService_Izinga\WebService_Izinga.csproj", "{33823D87-5E0C-4283-8CE8-24BF9A43FB2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestThingy", "TestThingy\TestThingy.csproj", "{DE27855F-4EA4-48DB-8A5B-A8808509302F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{33823D87-5E0C-4283-8CE8-24BF9A43FB2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33823D87-5E0C-4283-8CE8-24BF9A43FB2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33823D87-5E0C-4283-8CE8-24BF9A43FB2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE27855F-4EA4-48DB-8A5B-A8808509302F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE27855F-4EA4-48DB-8A5B-A8808509302F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE27855F-4EA4-48DB-8A5B-A8808509302F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE27855F-4EA4-48DB-8A5B-A8808509302F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

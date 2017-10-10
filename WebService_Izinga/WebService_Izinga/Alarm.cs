@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebService_Izinga
 {
-    class Alarm
+    public class Alarm
     {
         public DateTime TimeStamp { get; set; }
 

@@ -15,6 +15,7 @@ namespace WebService_Izinga
         public Service1()
         {
             alarms = new List<Alarm>();
+            LogReader lr = new LogReader(alarms);
         }
 
       
