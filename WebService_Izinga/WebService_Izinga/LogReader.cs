@@ -11,14 +11,14 @@ namespace WebService_Izinga
     public class LogReader
     {
 
-        private List<TeliaSMS> TeliaSMSs;
+        private List<TeliaSMS> teliaMessages;
         public LogReader()
         {
 
         }
         public LogReader(List<TeliaSMS> alarms)
         {
-            TeliaSMSs = alarms;
+            teliaMessages = alarms;
             TeliaLogReader();
         }
 
@@ -39,31 +39,29 @@ namespace WebService_Izinga
             }
 
             File.Copy(filepath, targetpath);
+           
             
             foreach (string line in File.ReadAllLines(targetpath))
             {
                 
-                if (line.Contains("Number=+4551418279"))
+                if (line.Contains("Number=+4552631220"))
                 {
                     Regex regex = new Regex(@"(\d{4}[-]\d{2}[-]\d{2}\s\d{2}[:]\d{2}[:]\d{2})|(\w{3,}[=][a-zA-Z+0-9\s]{0,})");
                     MatchCollection match = regex.Matches(line);
 
 
-                    DateTime TimeOfAlaram = IntepretDateTime(match[0].ToString());
+                    DateTime timeOfAlaram = IntepretDateTime(match[0].ToString());
+                    string number = IntepretData(match[1].ToString());
+                    string content = IntepretData(match[2].ToString());
 
-                    string content = IntepretData(match[1].ToString());
+                    
 
-                    string Number = IntepretData(match[2].ToString());
+                    TeliaSMS newAlaram = new TeliaSMS(number, timeOfAlaram, content);
 
-                    TeliaSMS NewAlaram = new TeliaSMS();
-
-                    NewAlaram.number = Number;
-                    NewAlaram.time = TimeOfAlaram;
-                    NewAlaram.content = content;
-
-                    if (!TeliaSMSs.Exists(x => x.time == TimeOfAlaram))
+                    
+                    if (!teliaMessages.Exists(x => x.time == timeOfAlaram))
                     {
-                        TeliaSMSs.Add(NewAlaram);
+                        teliaMessages.Add(newAlaram);
                     }
 
                     

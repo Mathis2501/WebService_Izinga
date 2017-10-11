@@ -11,11 +11,11 @@ namespace WebService_Izinga
     public class TeliaSMS
     {
         [DataMember]
-        public string number { get; set; }
+        public string number { get; private set; }
         [DataMember]
-        public DateTime time { get; set; }
+        public DateTime time { get; private set; }
         [DataMember]
-        public string content { get; set; }
+        public string content { get; private set; }
 
 
         public TeliaSMS(string Number, DateTime Time, string Content)
@@ -24,9 +24,6 @@ namespace WebService_Izinga
             time = Time;
             content = Content;
         }
-        public TeliaSMS()
-        {
-
-        }
+    
     }
 }

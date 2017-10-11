@@ -22,9 +22,10 @@ namespace WebService_Izinga
       
 
 
-        public TeliaSMS GetData()
+        public List<TeliaSMS> GetData()
         {
-            return alarms[0];
+            return alarms;
+            
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)

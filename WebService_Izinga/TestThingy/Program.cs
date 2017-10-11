@@ -67,6 +67,7 @@ namespace TestThingy
         }
         void Run()
         {
+
             TeliaLogReader();
             Console.ReadKey();
         }

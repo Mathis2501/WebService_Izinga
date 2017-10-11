@@ -12,7 +12,7 @@ namespace WebService_Izinga
     public interface IService1
     {
         [OperationContract]
-        TeliaSMS GetData();
+        List<TeliaSMS> GetData();
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
