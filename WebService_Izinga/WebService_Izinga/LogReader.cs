@@ -10,7 +10,7 @@ namespace WebService_Izinga
 {
     public class LogReader
     {
-
+        //comment
         private List<TeliaSMS> teliaMessages;
         public LogReader()
         {
