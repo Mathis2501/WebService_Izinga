@@ -10,7 +10,7 @@ namespace WebService_Izinga
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
-    public class Service1 : IService1
+    public class AlarmService : IAlarmService
     {
         private object postAlarmLock = new object();
         private List<TeliaSMS> alarms;
@@ -18,7 +18,7 @@ namespace WebService_Izinga
 
 
 
-        public Service1()
+        public AlarmService()
         {
             alarms = lr.TeliaLogReader();
         }

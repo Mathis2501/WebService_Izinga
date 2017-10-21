@@ -38,9 +38,7 @@ namespace WebService_Izinga
                 File.Delete(targetpath);
             }
 
-
             File.Copy(filepath, targetpath);
-
 
             foreach (string line in File.ReadAllLines(targetpath))
             {
