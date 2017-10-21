@@ -11,19 +11,19 @@ namespace WebService_Izinga
     public class TeliaSMS
     {
         [DataMember]
-        public string number { get; private set; }
+        public string Number { get; private set; }
         [DataMember]
-        public DateTime time { get; private set; }
+        public DateTime Time { get; private set; }
         [DataMember]
-        public string content { get; private set; }
+        public string Content { get; private set; }
 
 
-        public TeliaSMS(string Number, DateTime Time, string Content)
+        public TeliaSMS(string number, DateTime time, string content)
         {
-            number = Number;
-            time = Time;
-            content = Content;
+            Number = number;
+            Time = time;
+            Content = content;
         }
-    
+
     }
 }

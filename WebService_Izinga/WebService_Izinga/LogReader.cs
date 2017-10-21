@@ -10,25 +10,21 @@ namespace WebService_Izinga
 {
     public class LogReader
     {
-        //comment
+
         private List<TeliaSMS> teliaMessages;
+
         public LogReader()
         {
-
-        }
-        public LogReader(List<TeliaSMS> alarms)
-        {
-            teliaMessages = alarms;
-            TeliaLogReader();
+            teliaMessages = new List<TeliaSMS>();
+            //TeliaLogReader();
         }
 
-        
 
-        public void TeliaLogReader()
+
+        public List<TeliaSMS> TeliaLogReader()
         {
 
             string filepath = ".\\TestData\\trace_0.txt";
-            //string filepath = @"C:\Program Files (x86)\Mobilt Bredband\Log\trace_0.txt";
             //string targetpath = @"C:\Program Files (x86)\Mobilt Bredband\Log\trace_0_kopi.txt";
             string targetFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Mobilt Bredband\\Log";
             string targetpath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Mobilt Bredband\\Log\\trace_0_kopi.txt";
@@ -38,37 +34,35 @@ namespace WebService_Izinga
                 Directory.CreateDirectory(targetFolder);
             }
 
+
             File.Copy(filepath, targetpath);
-           
-            
+
+
             foreach (string line in File.ReadAllLines(targetpath))
             {
-                
+
                 if (line.Contains("Number=+4552631220"))
                 {
                     Regex regex = new Regex(@"(\d{4}[-]\d{2}[-]\d{2}\s\d{2}[:]\d{2}[:]\d{2})|(\w{3,}[=][a-zA-Z+0-9\s]{0,})");
                     MatchCollection match = regex.Matches(line);
 
-
                     DateTime timeOfAlaram = IntepretDateTime(match[0].ToString());
                     string number = IntepretData(match[1].ToString());
                     string content = IntepretData(match[2].ToString());
 
-                    
-
                     TeliaSMS newAlaram = new TeliaSMS(number, timeOfAlaram, content);
 
-                    
-                    if (!teliaMessages.Exists(x => x.time == timeOfAlaram))
+                    if (!teliaMessages.Exists(x => x.Time == timeOfAlaram))
                     {
                         teliaMessages.Add(newAlaram);
                     }
 
-                    
+
                 }
             }
 
             File.Delete(targetpath);
+            return teliaMessages;
         }
 
         public void Objectfiller()
@@ -95,39 +89,39 @@ namespace WebService_Izinga
 
         //public void OldLogReader()
         //{
-            //StreamReader sr = new StreamReader(targetpath);
-            //foreach (string line in File.ReadAllLines(targetpath))
-            //{
-            //    if (line.Contains("Number=+4551418279"))
-            //    {
-            //        string[] lines = line.Split(';');
+        //StreamReader sr = new StreamReader(targetpath);
+        //foreach (string line in File.ReadAllLines(targetpath))
+        //{
+        //    if (line.Contains("Number=+4551418279"))
+        //    {
+        //        string[] lines = line.Split(';');
 
-            //        for (int i = 0; i < lines.Length; i++)
-            //        {
-            //            if (i == 0)
-            //            {
-            //                string[] DateandTime = lines[i].Split(' ');
-            //                for (int j = 0; j < DateandTime.Length; j++)
-            //                {
-            //                    if (j == 0)
-            //                    {
-            //                        DateandTime[j] = DateandTime[j].Substring(1);
-            //                        string[] RealDateandTime = DateandTime[j].Split('-');
-            //                        for (int k = 0; k < RealDateandTime.Length; k++)
-            //                        {
-            //                            if (k == 0)
-            //                            {
-            //                                //NewSMS.time = RealDateandTime[k];
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
+        //        for (int i = 0; i < lines.Length; i++)
+        //        {
+        //            if (i == 0)
+        //            {
+        //                string[] DateandTime = lines[i].Split(' ');
+        //                for (int j = 0; j < DateandTime.Length; j++)
+        //                {
+        //                    if (j == 0)
+        //                    {
+        //                        DateandTime[j] = DateandTime[j].Substring(1);
+        //                        string[] RealDateandTime = DateandTime[j].Split('-');
+        //                        for (int k = 0; k < RealDateandTime.Length; k++)
+        //                        {
+        //                            if (k == 0)
+        //                            {
+        //                                //NewSMS.time = RealDateandTime[k];
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
-            //sr.Dispose();
+        //sr.Dispose();
 
         //}
 
