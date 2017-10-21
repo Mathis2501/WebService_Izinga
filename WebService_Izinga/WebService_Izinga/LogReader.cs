@@ -33,6 +33,10 @@ namespace WebService_Izinga
             {
                 Directory.CreateDirectory(targetFolder);
             }
+            if (File.Exists(targetpath))
+            {
+                File.Delete(targetpath);
+            }
 
 
             File.Copy(filepath, targetpath);
@@ -61,7 +65,7 @@ namespace WebService_Izinga
                 }
             }
 
-            File.Delete(targetpath);
+            //File.Delete(targetpath);
             return teliaMessages;
         }
 
