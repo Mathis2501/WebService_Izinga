@@ -56,7 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="TestData\ReadMe.txt" />
-    <Content Include="TestData\trace_0.txt" />
+    <Content Include="TestData\trace_0.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -27,8 +27,8 @@ namespace WebService_Izinga
         public void TeliaLogReader()
         {
 
-            
-            string filepath = @"C:\Program Files (x86)\Mobilt Bredband\Log\trace_0.txt";
+            string filepath = ".\\TestData\\trace_0.txt";
+            //string filepath = @"C:\Program Files (x86)\Mobilt Bredband\Log\trace_0.txt";
             //string targetpath = @"C:\Program Files (x86)\Mobilt Bredband\Log\trace_0_kopi.txt";
             string targetFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Mobilt Bredband\\Log";
             string targetpath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Mobilt Bredband\\Log\\trace_0_kopi.txt";
